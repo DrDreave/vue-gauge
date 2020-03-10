@@ -11,6 +11,8 @@ $vg-gauge-thickness: 20px !default;
 .vg-gauge {
   position: relative;
   @include half-circle($vg-gauge-size);
+  margin-left: auto;
+  margin-right: auto;
   background: lightgrey;
   overflow: hidden;
 }
@@ -43,4 +45,5 @@ $vg-gauge-thickness: 20px !default;
   font-size: 2em;
   line-height: 1;
   text-align: center;
+  color: gray;
 }
