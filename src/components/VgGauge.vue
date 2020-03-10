@@ -2,6 +2,7 @@
   <div>
     <div class="vg-gauge">
       <div class="vg-gauge-progress" :style="progressStyle"></div>
+      <div class="vg-gauge-background"></div>
       <div class="vg-gauge-label">
         <slot>{{ value }}%</slot>
       </div>

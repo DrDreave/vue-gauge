@@ -1,25 +1,25 @@
-$size: 100px;
-$thickness: 20px;
+$vg-gauge-size: 200px !default;
+$vg-gauge-thickness: 20px !default;
+
+@mixin half-circle($diameter) {
+  width: $diameter;
+  height: $diameter / 2;
+  border-top-left-radius: 100% 200%;
+  border-top-right-radius: 100% 200%;
+}
 
 .vg-gauge {
   position: relative;
-  width: $size * 2;
-  height: $size;
-  border-top-left-radius: $size * 2;
-  border-top-right-radius: $size * 2;
+  @include half-circle($vg-gauge-size);
   background: lightgrey;
   overflow: hidden;
 }
 
-.vg-gauge:after {
-  content: ' ';
+.vg-gauge-background {
   position: absolute;
-  top: $thickness;
-  left: $thickness;
-  right: $thickness;
+  @include half-circle($vg-gauge-size - ($vg-gauge-thickness * 2));
+  left: $vg-gauge-thickness;
   bottom: 0;
-  border-top-left-radius: $size * 2;
-  border-top-right-radius: $size * 2;
   background: white;
 }
 
@@ -27,10 +27,7 @@ $thickness: 20px;
   position: absolute;
   top: 0;
   left: 0;
-  width: $size * 2;
-  height: $size;
-  border-top-left-radius: $size * 2;
-  border-top-right-radius: $size * 2;
+  @include half-circle($vg-gauge-size);
   background: rebeccapurple;
   transform: rotate(180deg);
   -webkit-backface-visibility: hidden;
@@ -41,9 +38,8 @@ $thickness: 20px;
 .vg-gauge-label {
   position: absolute;
   bottom: 0;
-  left: $thickness;
-  right: $thickness;
-  z-index: 1;
+  left: $vg-gauge-thickness;
+  right: $vg-gauge-thickness;
   font-size: 2em;
   line-height: 1;
   text-align: center;
