@@ -71,6 +71,7 @@ $thickness: 20px;
   border-top-right-radius: $size * 2;
   background: rebeccapurple;
   transform: rotate(180deg);
+  -webkit-backface-visibility: hidden;
   transform-origin: 50% 100%;
   transition: transform 1s;
 }
