@@ -2,8 +2,8 @@
   <div id="app">
     <h1>Vue Gauge</h1>
     <hr />
-    <vg-gauge :value="value" />
-    <input v-model.number="value" type="range" min="0" max="100" />
+    <vg-gauge :value="value" :max="200" />
+    <input v-model.number="value" type="range" min="0" max="200" />
   </div>
 </template>
 
