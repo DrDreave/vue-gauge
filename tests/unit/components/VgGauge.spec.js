@@ -8,7 +8,7 @@ describe('VgGauge.vue', () => {
       propsData: { value },
     });
     const label = wrapper.find('.vg-gauge-label');
-    expect(label.text()).toBe(value + '%');
+    expect(label.text()).toBe(value.toString());
   });
 
   it('renders the content provided via default slot', () => {
@@ -19,7 +19,6 @@ describe('VgGauge.vue', () => {
       },
     });
     const label = wrapper.find('.vg-gauge-label');
-    console.log(label, label.innerHTML);
-    expect(label.innerHTML).toBe(labelContent);
+    expect(label.text()).toBe(labelContent);
   });
 });
