@@ -1,33 +1,37 @@
-$vg-gauge-size: 200px !default;
 $vg-gauge-thickness: 20px !default;
 
-@mixin half-circle($diameter) {
-  width: $diameter;
-  height: $diameter / 2;
+@mixin half-circle() {
+  padding-top: 50%;
   border-top-left-radius: 100% 200%;
   border-top-right-radius: 100% 200%;
 }
 
 .vg-gauge {
   position: relative;
-  @include half-circle($vg-gauge-size);
-  margin-left: auto;
-  margin-right: auto;
   overflow: hidden;
+}
+
+.vg-gauge-background {
+  @include half-circle();
 }
 
 .vg-gauge-overlay {
   position: absolute;
-  @include half-circle($vg-gauge-size - ($vg-gauge-thickness * 2));
   left: $vg-gauge-thickness;
+  right: $vg-gauge-thickness;
   bottom: 0;
+
+  &-inner {
+    @include half-circle();
+  }
 }
 
 .vg-gauge-progress {
   position: absolute;
   top: 0;
   left: 0;
-  @include half-circle($vg-gauge-size);
+  right: 0;
+  @include half-circle();
   transform: rotate(180deg);
   -webkit-backface-visibility: hidden;
   transform-origin: 50% 100%;

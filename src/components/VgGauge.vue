@@ -1,7 +1,10 @@
 <template>
-  <div class="vg-gauge" :style="gaugeStyle">
+  <div class="vg-gauge">
+    <div class="vg-gauge-background" :style="gaugeStyle"></div>
     <div class="vg-gauge-progress" :style="progressStyle"></div>
-    <div class="vg-gauge-overlay" :style="overlayStyle"></div>
+    <div class="vg-gauge-overlay">
+      <div class="vg-gauge-overlay-inner" :style="overlayStyle"></div>
+    </div>
     <div class="vg-gauge-label">
       <slot>
         <span :style="labelStyle">{{ displayedValue }}</span>
