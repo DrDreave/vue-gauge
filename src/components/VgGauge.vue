@@ -80,7 +80,11 @@ export default {
   watch: {
     // Whenever `props.value` changes, update the animation.
     value(newValue) {
-      this.animateValue(newValue, 1000);
+      if (Number.isInteger(newValue)) {
+        this.animateValue(newValue, 1000);
+      } else {
+        this.displayedValue = newValue;
+      }
     },
   },
   methods: {
