@@ -35,6 +35,7 @@ export default {
     progressStyle() {
       return {
         transform: 'rotate(' + this.progressRotation + 'deg) scaleY(-1)',
+        'transition-duration': `${this.animationDuration}ms`,
         background: this.activeColor,
       };
     },
@@ -56,6 +57,10 @@ export default {
     };
   },
   props: {
+    animationDuration: {
+      type: Number,
+      default: 1000,
+    },
     value: {
       type: Number,
       default: 0,
@@ -80,25 +85,25 @@ export default {
   watch: {
     // Whenever `props.value` changes, update the animation.
     value(newValue) {
-      if (Number.isInteger(newValue)) {
-        this.animateValue(newValue, 1000);
+      if (this.animationDuration && Number.isInteger(newValue)) {
+        this.animateDisplayedValue();
       } else {
         this.displayedValue = newValue;
       }
     },
   },
   methods: {
-    animateValue(end, duration) {
-      const range = end - this.displayedValue;
-      const increment = end > this.displayedValue ? 1 : -1;
-      const stepTime = Math.abs(Math.floor(duration / range));
+    animateDisplayedValue() {
+      const range = this.value - this.displayedValue;
+      const increment = this.value > this.displayedValue ? 1 : -1;
+      const stepTime = Math.abs(Math.floor(this.animationDuration / range));
 
       if (this.timer) {
         clearInterval(this.timer);
       }
       this.timer = setInterval(() => {
         this.displayedValue += increment;
-        if (this.displayedValue === end) {
+        if (this.displayedValue === this.value) {
           clearInterval(this.timer);
         }
       }, stepTime);
