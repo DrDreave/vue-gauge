@@ -40,6 +40,9 @@ export default {
       };
     },
     activeColor() {
+      if (this.colors.length === 1) {
+        return this.colors[0];
+      }
       const colorBucket = Math.floor(this.value / this.colorBucketSize);
       return this.colors[colorBucket];
     },
